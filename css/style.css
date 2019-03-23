@@ -1,0 +1,27 @@
+body{
+    background-image: linear-gradient(to top right, #033617, #065c27);
+    background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+    color: #a4bd99;
+}
+
+h1{
+    text-align: center;
+    border: dashed  #065c27 4px;
+}
+
+.container{
+    border: #77876B solid 2px;
+
+}
+
+#button{
+    float: center;
+    /* border: #77876B solid 2px; */
+}
+
+.col{
+    text-align: center;
+}
