@@ -1,69 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <title>I BET YOU</title>
-</head>
-
-<body>
-    <header>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">I BET YOU!
-            </div>
-    </header>
-
-          
-    <div class="container-fluid">
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+        <!-- Firebase Ref -->
+        <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    
+        <!-- moment js ref -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800i|Quantico:400i" rel="stylesheet">
+        
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+            
+        <title>Betcha!</title>
+    </head>
+    
+    <body>
         <div class="container">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Account Creation</h5>
-                    <form>
-                        <div class="form-group">
-                            <label for="accountName-input">Account Name</label>
-                            <input type="text" class="form-control accountName" id="accountName-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-input">Password</label>
-                            <input type="text" class="form-control password" id="password-input">
-                        </div>
-                        <div class="form-group">
-                                <label for="age-input">Age</label>
-                                <input type="text" class="form-control age" id="age-input">
-                            </div>
-                        <div class="form-group">
-                            <label for="email-input">Email</label>
-                            <input type="text" class="form-control email" id="email-input">
-                        </div>
-                        <div class="form-group">
-                                <h5>Agreement</h5>
-                                <p>I agree I'm of the age of 21 or older and consent to the rules, regulations of "I BET YOU".</p>
-                                <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                          <input type="radio" aria-label="Radio button for following text input">
-                                        </div>
-                            </div><br>
+            <header>
+                <h1 class="z-depth-5">Betcha!</h1>
+            </header>
 
-                        <button class="btn btn-primary" id="submit-bid" type="submit">Submit</button>
-                    </form>
+            <div class="row">
+                <div class="col s4">
+                    <div class="row">
+                            <img src="https://img.icons8.com/ios/96/000000/crowd.png">
+                    </div>
+                    <div class="row">
+                           <h4>Bet Your Friends</h2> 
+                           <h6>Friends talking trash?</h4>
+                           <h6>Put up a friendly wager </h4>
+                    </div>
+                   
+                </div>
+                <div class="col s4">
+                        <div class="row">
+                                <img src="https://img.icons8.com/ios/100/000000/budget.png">
+                        </div>
+                        <div class="row">
+                                <h4>Fast, Safe, Secure</h4>
+                                <h6>Put your money where your mouth is!</h6>
+                                <h6>Gotta hunch, or feeling confident?</h6>
+                                <h6>Make a BET!</h6>
+                        </div>
+
+                    
+                </div>
+                <div class="col s4">
+                        <div class="row">
+                                <img src="https://img.icons8.com/ios/100/000000/exchange.png">
+                        </div>
+                        <div class="row">
+                               <h4>Put Up, or Shut Up!</h4>
+                               <h6>Take Action!</h6>
+                               <h6>Real Money!</h6>
+                               <h6>Real Winners and Losers!</h6>
+                        </div>
                 </div>
             </div>
-        </div>
-    </div>
+    <br>
+            <div class="row" id="button">
     
-
-
-        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+              
+                       
+                    <button type="submit" class="submit">Login/Register</button>
+            </div>
+            </form>
+    
+            
+        <br>
+        <br>
+        </div>
+    
         <script src="css/javascript/app.js"> </script>
-</body>
-
-</html>
+    </body>
+    
+    </html>
