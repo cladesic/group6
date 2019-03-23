@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-.jumbotron{
-    text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color:rgb(59, 221, 59);
-    color: white
-}
-=======
+
 body{
     background-image: linear-gradient(to top right, #033617, #065c27);
     background-repeat: no-repeat;
@@ -34,4 +26,4 @@ h1{
 .col{
     text-align: center;
 }
->>>>>>> 4c4915a1fe3893b9406d58688fe3f5f0ad588190
+
