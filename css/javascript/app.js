@@ -186,3 +186,8 @@
           console.log('USER IS NOT SIGNED IN');
       }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, open);
+    });
