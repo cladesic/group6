@@ -10,6 +10,18 @@
   };
   firebase.initializeApp(config);
 
+  //Create variable to reference the database
+  var database = firebase.database();
+
+  //Global variables
+  var uid = '';
+  var firstName = '';
+  var lastName = '';
+  var signingUp = false;
+
+  //Useful Functions
+
+
     //HANDLES SIGN IN
     function toggleSignIn() {
         if (firebase.auth().currentUser) {
@@ -17,42 +29,37 @@
           firebase.auth().signOut();
           // [END signout]
         } else {
-          var email = document.getElementById('email').value;
-          var password = document.getElementById('password').value;
+          var email = document.getElementById('loginSignIn').value;
+          var password = document.getElementById('passwordSignIn').value;
           if (email.length < 4) {
-            alert('Please enter an email address.');
-            return;
+            alert('Please enter an email address');
           }
-          if (password.length < 4) {
-            alert('Please enter a password.');
+          if ((password.length < 4) || (password.indexOf())) {
+            alert('Please enter a valid password.');
             return;
           }
           // Sign in with email and pass.
-          // [START authwithemail]
           firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            // [START_EXCLUDE]
             if (errorCode === 'auth/wrong-password') {
               alert('Wrong password.');
             } else {
               alert(errorMessage);
             }
             document.getElementById('signIn').disabled = false;
-            // [END_EXCLUDE]
           });
-          // [END authwithemail]
         }
         document.getElementById('signIn').disabled = true;
       }
   
       //HANDLES SIGN UP
       function handleSignUp() {
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        console.log('EMAIL: ', email);
-        console.log('PASSWORD: ', password);
+        var email = document.getElementById('emailUp').value;
+        var password = document.getElementById('passwordUp').value;
+        firstName = document.getElementById('first_name').value;
+        lastName = document.getElementById('last_name').value;
         if (email.length < 4) {
           alert('Please enter an email address.');
           return;
@@ -73,11 +80,11 @@
             alert(errorMessage);
           }
         });
-      }
+        signingUp = true;
+    }
   
-      /**
-       * Sends an email verification to the user.
-       */
+   
+      //Sends an email verification to the user.
       function sendEmailVerification() {
         // [START sendemailverification]
         firebase.auth().currentUser.sendEmailVerification().then(function() {
@@ -108,9 +115,7 @@
             alert(errorMessage);
           }
           console.log(error);
-          // [END_EXCLUDE]
         });
-        // [END sendpasswordemail];
       }
   
       /**
@@ -122,23 +127,34 @@
         // Listening for auth state changes.
         // [START authstatelistener]
         firebase.auth().onAuthStateChanged(function(user) {
-          // [START_EXCLUDE silent]
-          document.getElementById('emailVerify').disabled = true;
-          // [END_EXCLUDE]
           if (user) {
             // User is signed in.
-            var displayName = user.displayName;
+            // If the user is signing up 
+            if (signingUp === true) {
+              //set display Name
+              var displayNamez = firstName+' '+lastName;
+              //update User with display Name
+              user.updateProfile({
+                displayName: displayNamez
+              }).then(function() {
+                console.log('DISPLAY NAME UPDATED SUCCESFULLY');
+              }).catch(function(error) {
+                console.log(errorCode);
+              })
+              signingUp = false;
+            }
+
             var email = user.email;
             var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
+            // var photoURL = user.photoURL;
+            // var isAnonymous = user.isAnonymous;
+            uid = user.uid;
+            // var providerData = user.providerData;
             // [START_EXCLUDE]
             document.getElementById('signIn').textContent = 'Sign out';
-            if (!emailVerified) {
-              document.getElementById('emailVerify').disabled = false;
-            }
+            // if (!emailVerified) {
+            //   document.getElementById('emailVerify').disabled = false;
+            // }
             // [END_EXCLUDE]
           } else {
             // User is signed out.
@@ -154,9 +170,9 @@
   
         document.getElementById('signIn').addEventListener('click', toggleSignIn, false);
         document.getElementById('signUp').addEventListener('click', handleSignUp, false);
-        document.getElementById('emailVerify').addEventListener('click', sendEmailVerification, false);
-        document.getElementById('resetEmail').addEventListener('click', sendPasswordReset, false);
-        document.getElementById('userSignCheck').addEventListener('click', checkUser, false);
+        // document.getElementById('emailVerify').addEventListener('click', sendEmailVerification, false);
+        // document.getElementById('resetEmail').addEventListener('click', sendPasswordReset, false);
+        // document.getElementById('userSignCheck').addEventListener('click', checkUser, false);
       }
   
       window.onload = function() {
