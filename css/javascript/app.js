@@ -24,4 +24,5 @@ document.addEventListener('DOMContentLoaded', function() {
 function myFunction() {
   var x = document.getElementById("#imgUpload");
   x.disabled = true;
-}
+};
+
