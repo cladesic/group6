@@ -47,10 +47,8 @@
             } else {
               alert(errorMessage);
             }
-            document.getElementById('signIn').disabled = false;
           });
         }
-        document.getElementById('signIn').disabled = true;
       }
   
       //HANDLES SIGN UP
@@ -128,6 +126,16 @@
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             //User is signed in
+                console.log('THERE IS A USER: ', user);
+                console.log('is this not firing im lost');
+
+              //Grab uid from user
+              uid = user.uid;
+
+              //send to userPage
+              window.location = 'userPage.html';
+              }
+          
             // If the user is signing up 
             if (signingUp === true) {
               //set display Name
@@ -141,33 +149,7 @@
                 console.log(errorCode);
               })
               signingUp = false;
-              console.log('USER OBJECT: ', user);
-
-            //direct user to userPage
-            window.location.replace('userPage.html');
             }
-
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            // var photoURL = user.photoURL;
-            // var isAnonymous = user.isAnonymous;
-            uid = user.uid;
-            // var providerData = user.providerData;
-            // [START_EXCLUDE]
-            document.getElementById('signIn').textContent = 'Sign out';
-            // if (!emailVerified) {
-            //   document.getElementById('emailVerify').disabled = false;
-            // }
-            // [END_EXCLUDE]
-          } else {
-            // User is signed out.
-            // [START_EXCLUDE]
-            document.getElementById('signIn').textContent = 'Sign in';
-            // [END_EXCLUDE]
-          }
-          // [START_EXCLUDE silent]
-          document.getElementById('signIn').disabled = false;
-          // [END_EXCLUDE]
         });
         // [END authstatelistener]
   
