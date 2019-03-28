@@ -8,29 +8,25 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
-
   <!-- Firebase Ref -->
   <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
-
   <!-- moment js ref -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800i|Quantico:400i" rel="stylesheet">
-
   <!-- materialize icons link-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!--Link to CSS and Javascript-->
   <link rel="stylesheet" href="css/style.css">
   <script src="css/javascript/app.js"> </script>
   <title>Betcha! User</title>
 </head>
 <nav>
+  <!--Slide Navbar Area-->
   <div class="nav-wrapper">
     <ul id="slide-out" class="sidenav">
       <li>
@@ -55,14 +51,17 @@
         <div id="balance"></div>
       </li>
     </ul>
+    <!--Top Navbar Area-->
     <img src="css/images/profile.png" data-target="slide-out" class="sidenav-trigger"></img>
     <ul id="nav-mobile" class="center hide-on-med-and-down"></ul>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo center">Betcha!</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><div>Search All Bets </div></li>
+        <li>
+          <div>Search All Bets </div>
+        </li>
         <li><i class="material-icons">search</i></li>
-        <li><textarea id="searchBet" class="materialize-textarea"></textarea></li> 
+        <li><textarea id="searchBet" class="materialize-textarea"></textarea></li>
         <li><a href="#">My Bets </a></li>
         <li></li>
       </ul>
@@ -70,6 +69,7 @@
 </nav>
 
 <body>
+  <!--Chat History Area-->
   <div class="container">
     <div class="row">
       <div class="col s3">Trash Talk
@@ -89,7 +89,7 @@
                   enim ut, faucibus sollicitudin ex.</p>
               </span>
             </div>
-             <!--Chat Area-->
+            <!--Chat Input Area-->
             <textarea id="chatArea" class="materialize-textarea"></textarea>
             <button class="btn waves-effect waves-light" type="submit" name="action">
               <i class="material-icons chat">send</i>
@@ -97,19 +97,33 @@
           </div>
         </div>
       </div>
-       <!--Betting Results/Images Area-->
+      <!--Betting Results/Images Area-->
       <div class="col s6">Betting Results
         <div class="row">
           <div id="betArea">
           </div>
         </div>
       </div>
-  <!--Sports API Area 1-->
+      <!--Sports API Area 1-->
       <div class="col s3">Sports Stats
-          <div class="row">
-            <div class="col s12">
+        <div class="row">
+          <div class="col s12">
             <div id="sportsApi">
               <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
+                volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
+                orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
+                bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
+                facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
+                suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
+                lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
+                faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
+                amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
+                enim ut, faucibus sollicitudin ex.</p>
+            </div>
+            <!--Sports API Area 2-->
+            <div class="col s12">
+              <div id="sportsApi2">
+                <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
                   volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
                   orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
                   bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
@@ -119,88 +133,146 @@
                   faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
                   amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
                   enim ut, faucibus sollicitudin ex.</p>
+              </div>
             </div>
-    <!--Sports API Area 2-->
-            <div class="col s12">
-                <div id="sportsApi2">
-                  <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
-                      volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
-                      orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
-                      bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
-                      facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
-                      suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
-                      lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
-                      faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
-                      amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
-                      enim ut, faucibus sollicitudin ex.</p>
-                </div>
           </div>
-      </div>
-    </div>
-
-    <!-- Bet Modal for side nav-->
-    <div id="betModal" class="modal">
-      <div class="modal-content">
-        <h4>Bets</h4>
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s6">
-                <input id="bet_name" type="text" class="validate">
-                <label for="bet_name">Title</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="description" type="text" class="validate">
-                <label for="description">Description</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="amount_bet" type="text" class="validate">
-                <label for="amount_bet">Amount Bet</label>
-              </div>
-              <div class="input-field col s3">
-                <input id="date_bet" type="date" class="validate">
-                <label for="date_bet">Expire Date Of Bet</label>
-              </div>
-              <div class="input-field col s3">
-                <input id="time_bet" type="time" class="validate">
-                <label for="time_bet">Expire Time Of Bet</label>
-              </div>
-              
-            </div>
-          </form>
         </div>
-      </div>
-      <!---Upload Image in New Bet-->
-      <input type="file" id="imgUpload">
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree Bet</a>
-      </div>
-    </div>
 
-    <!-- Bet History Modal for side nav-->
-    <div id="historyModal" class="modal">
-      <div class="modal-content">
-        <h4>Bets</h4>
-        <div class="row">
-          <form class="col s12">
+        <!-- New Bet Modal for side nav-->
+        <div id="betModal" class="modal">
+          <div class="modal-content">
+            <h4>Bets</h4>
             <div class="row">
-              <div class="input-field col s6">
-                <input id="history_name" type="text" class="validate">
-                <label for="history_name">Title</label>
-              </div>
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="bet_name" type="text" class="validate">
+                    <label for="bet_name">Title</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="description" type="text" class="validate">
+                    <label for="description">Description</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="amount_bet" type="text" class="validate">
+                    <label for="amount_bet">Amount Bet</label>
+                  </div>
+                  <div class="input-field col s3">
+                    <input id="date_bet" type="date" class="validate">
+                    <label for="date_bet">Expire Date Of Bet</label>
+                  </div>
+                  <div class="input-field col s3">
+                    <input id="time_bet" type="time" class="validate">
+                    <label for="time_bet">Expire Time Of Bet</label>
+                  </div>
+
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
+
+          <!---Upload Image in New Bet-->
+          <input type="file" id="imgUpload">
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree Bet</a>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+
+        <!-- Bet History Modal for side nav-->
+        <div id="historyModal" class="modal">
+          <div class="modal-content">
+            <h4>Bets</h4>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <table>
+                      <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                      </tr>
+                      <tr>
+                        <td>Super Bowl</td>
+                        <td>2019 Super Bowl Winner</td>
+                        <td>100.00</td>
+                        <td>02/03/2019</td>
+                        <td>5:30 PM</td>
+                      </tr>
+                    </table>
+                    <label for="history_name">Title</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+
+        <!-- Profile update Modal-->
+        <div id="profileModal" class="modal">
+          <div class="modal-content">
+            <h4>Profile</h4>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Update</a>
+          </div>
+        </div>
+
+        <!--Wallet Modal-->
+        <div id="accountModal" class="modal">
+          <div class="modal-content">
+            <h4>Profile</h4>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input id="email" type="email" class="validate">
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="wallet" type="number" class="validate">
+                    <label for="wallet">Enter Amount $</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+          </div>
+        </div>
+
       </div>
     </div>
-
-   
-
-  </div>
-  </div>
 
 </body>
 

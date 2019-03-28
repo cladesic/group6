@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('#historyModal');
   var instances = M.Modal.init(elems, open);
 });
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('#accountModal');
+  var instances = M.Modal.init(elems, open);
+});
 
 function myFunction() {
   var x = document.getElementById("#imgUpload");
