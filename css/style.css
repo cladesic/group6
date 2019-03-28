@@ -34,11 +34,13 @@ nav{
     margin-left: 5px;
     margin-top: 5px;
 } 
-div.chatText {
-    position: absolute;
-    bottom: 5px;
-    right: 0;
-    width: 300px;
-    height: 200px;
-    border: 3px solid white;
-  }
+#chatArea{
+    background-color:white;
+}
+.card-panel{
+    overflow: scroll; 
+    height: 400px;
+}
+#betArea{
+    overflow: auto;
+}
