@@ -35,6 +35,7 @@ task
 //create reference with initial file path and name
 var storage = firebase.storage();
 var pathReference = storage.ref('1553740562015-IMG_0797.jpg');
+console.log('STORAGE REFERENCE PATH TO IMAGE: ', pathReference);
 
 //Download data via URL by calling the getDownloadURL() method
 pathReference.getDownloadURL().then(function(url) {

@@ -23,8 +23,11 @@
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800i|Quantico:400i" rel="stylesheet">
 
+  <!-- materialize icons link-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
-  <script src="css/javascript/app.js"> </script>
+  <script src="css/javascript/userPage.js"> </script>
   <title>Betcha! User</title>
 </head>
 <nav>
@@ -40,101 +43,164 @@
           <a href="#email"><span class="white-text email"></span></a>
         </div>
       </li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#betModal">Bet</a></li>
+      <li><a class="waves-effect waves-light btn modal-trigger" href="#betModal">New Bet</a></li>
       <li>
         <div class="divider"></div>
       </li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#historyModal">Bet History</a></li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#accountModal">Balance</a>
-        <li><a href="#!">Something Link</a></li>
-        <li><a class="subheader">Scores</a></li>
+      <li><a class="waves-effect waves-light btn modal-trigger" href="#historyModal">Transition History</a></li>
+      <li><a class="waves-effect waves-light btn modal-trigger" href="#profileModal">Profile Update</a>
+      <li><a class="waves-effect waves-light btn modal-trigger" href="#accountModal">Wallet</a>
+      <li>
+      <li><a href="#!">Account Balance $</a>
+        <div id="balance"></div>
+      </li>
     </ul>
     <img src="css/images/profile.png" data-target="slide-out" class="sidenav-trigger"></img>
     <ul id="nav-mobile" class="center hide-on-med-and-down"></ul>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo center">Betcha!</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Bets</a></li>
-        <li><a href="#">SomeLink</a></li>
-        <li> <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Sign In/Out</a></li>
+        <li><div>Search All Bets </div></li>
+        <li><i class="material-icons">search</i></li>
+        <li><textarea id="searchBet" class="materialize-textarea"></textarea></li> 
+        <li><a href="#">My Bets </a></li>
+        <li></li>
       </ul>
     </div>
 </nav>
+
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col s12">This div is 12-columns</div>
-
-  </div>
-  <div class="row">
-    <div class="col s12">This div is 12-columns wide on all screen sizes</div>
-    <div class="col s6">6-columns (one-half)</div>
-    <div class="col s6">6-columns (one-half)</div>
-  </div>
-</div>
-
-<!-- Bet Modal for side nav-->
-<div id="betModal" class="modal">
-  <div class="modal-content">
-    <h4>Bets</h4>
+  <div class="container">
     <div class="row">
-      <form class="col s12">
+      <div class="col s3">Trash Talk
         <div class="row">
-          <div class="input-field col s6">
-            <input id="bet_name" type="text" class="validate">
-            <label for="bet_name">Title</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="description" type="text" class="validate">
-            <label for="description">Description</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="amount_bet" type="text" class="validate">
-            <label for="amount_bet">Amount Bet</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="date_bet" type="text" class="validate">
-            <label for="date_bet">Date of Bet</label>
+          <div class="col s12">
+            <div class="card-panel">
+              <span class="black-text">
+                <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
+                  volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
+                  orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
+                  bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
+                  facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
+                  suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
+                  lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
+                  faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
+                  amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
+                  enim ut, faucibus sollicitudin ex.</p>
+              </span>
+            </div>
+             <!--Chat Area-->
+            <textarea id="chatArea" class="materialize-textarea"></textarea>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              <i class="material-icons chat">send</i>
+            </button>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree Bet</a>
-  </div>
-</div>
-
-<!-- Bet History Modal for side nav-->
-<div id="historyModal" class="modal">
-  <div class="modal-content">
-    <h4>Bets</h4>
-    <div class="row">
-      <form class="col s12">
+      </div>
+       <!--Betting Results/Images Area-->
+      <div class="col s6">Betting Results
         <div class="row">
-          <div class="input-field col s6">
-            <input id="history_name" type="text" class="validate">
-            <label for="history_name">Title</label>
+          <div id="betArea">
           </div>
         </div>
-      </form>
+      </div>
+  <!--Sports API Area 1-->
+      <div class="col s3">Sports Stats
+          <div class="row">
+            <div class="col s12">
+            <div id="sportsApi">
+              <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
+                  volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
+                  orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
+                  bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
+                  facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
+                  suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
+                  lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
+                  faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
+                  amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
+                  enim ut, faucibus sollicitudin ex.</p>
+            </div>
+    <!--Sports API Area 2-->
+            <div class="col s12">
+                <div id="sportsApi2">
+                  <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
+                      volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
+                      orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
+                      bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
+                      facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
+                      suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
+                      lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
+                      faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
+                      amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
+                      enim ut, faucibus sollicitudin ex.</p>
+                </div>
+          </div>
+      </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-  </div>
-</div>
 
-<!--Chat Area-->
-<div class="chatText">
-  <div class="input-field col s6">
-    <textarea id="chatArea" class="materialize-textarea"></textarea>
-    <label for="chatArea">Chat</label>
-    <button class="btn waves-effect waves-light" type="submit" name="action">
-      <i class="material-icons chat">send</i>
-    </button>
+    <!-- Bet Modal for side nav-->
+    <div id="betModal" class="modal">
+      <div class="modal-content">
+        <h4>Bets</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="bet_name" type="text" class="validate">
+                <label for="bet_name">Title</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="description" type="text" class="validate">
+                <label for="description">Description</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="amount_bet" type="text" class="validate">
+                <label for="amount_bet">Amount Bet</label>
+              </div>
+              <div class="input-field col s3">
+                <input id="date_bet" type="date" class="validate">
+                <label for="date_bet">Expire Date Of Bet</label>
+              </div>
+              <div class="input-field col s3">
+                <input id="time_bet" type="time" class="validate">
+                <label for="time_bet">Expire Time Of Bet</label>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+      <!---Upload Image in New Bet-->
+      <input type="file" id="imgUpload">
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree Bet</a>
+      </div>
+    </div>
+
+    <!-- Bet History Modal for side nav-->
+    <div id="historyModal" class="modal">
+      <div class="modal-content">
+        <h4>Bets</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="history_name" type="text" class="validate">
+                <label for="history_name">Title</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+   
+
   </div>
-</div>
+  </div>
 
 </body>
 

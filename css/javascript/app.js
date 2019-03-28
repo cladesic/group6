@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-
-  // Initialize Firebase
+// Initialize Firebase
   var config = {
     apiKey: "AIzaSyCNzMfwo6UQ5HB-GH6unmM6YB0T7yPmdOE",
     authDomain: "illbetyou.firebaseapp.com",
@@ -129,7 +127,7 @@
         // [START authstatelistener]
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            // User is signed in.
+            //User is signed in
             // If the user is signing up 
             if (signingUp === true) {
               //set display Name
@@ -144,6 +142,9 @@
               })
               signingUp = false;
               console.log('USER OBJECT: ', user);
+
+            //direct user to userPage
+            window.location.replace('userPage.html');
             }
 
             var email = user.email;
@@ -209,7 +210,6 @@
       var elems = document.querySelectorAll('.modal');
       var instances = M.Modal.init(elems, open);
     });
-=======
 document.addEventListener('DOMContentLoaded', function() {
    var elems = document.querySelectorAll('.modal');
    var instances = M.Modal.init(elems, open);
@@ -228,4 +228,3 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('#historyModal');
   var instances = M.Modal.init(elems, open);
 });
->>>>>>> 8fe41827889c3a2a1849d444e4b346f02065b8ec
