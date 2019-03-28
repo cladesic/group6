@@ -142,6 +142,7 @@
                 console.log(errorCode);
               })
               signingUp = false;
+              console.log('USER OBJECT: ', user);
             }
 
             var email = user.email;
