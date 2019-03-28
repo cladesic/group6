@@ -15,6 +15,7 @@ h1{
 
 .container{
     border: #77876B solid 2px;
+    margin-top: 10px;
 
 }
 
@@ -29,4 +30,15 @@ h1{
 nav{
     background-color: #055813;
 }
-
+.sidenav-trigger{
+    margin-left: 5px;
+    margin-top: 5px;
+} 
+div.chatText {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    border: 3px solid white;
+  }
