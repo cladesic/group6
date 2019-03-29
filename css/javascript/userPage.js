@@ -90,57 +90,78 @@ var config = {
         //New Bet
         $('#agreeBet').on("click", function() {
           event.preventDefault();
-          var title = $('#bet_name').val();
-          var description = $('#description').val();
-          var amountBet = $('#amount_bet').val();
-          var dateBet = $('#date_bet').val();
-          var timeBet = $('#time_bet').val();
-          var urlIcon = '';
 
-          //Store image onto firebase storage
+          var title = $('#bet_name').val().trim();
+          var description = $('#description').val().trim();
+          var amountBet = $('#amount_bet').val().trim();
+          var dateBet = $('#date_bet').val().trim();
+          var urlIcon = '';
+          var imgUpload = $('#imgUpload').val().trim();
+
+          log('TITLE', title);
+          log('DESCRIPTION', description);
+          log('AMOUNT BET', amountBet);
+          log('dateBet', dateBet);
+          log('urlIcon', urlIcon);
+          log('IMAGE UPLOAD', imgUpload);
+
+          if (imgUpload !== '') {
+          //STORE IMAGE INTO FIREBASE STORAGE IF NOT NULL
           const ref = firebase.storage().ref();
           const file = document.querySelector('#imgUpload').files[0];
-          
-          //GET CURRENT USER
+          //get current user
           var user = firebase.auth().currentUser;
+          //get uid of user
           if (user) {
               uid = user.uid;
           }
+          //set name of file to uid + fileName
           const name = uid + '_' + file.name;
+          //get metadata info
           const metadata = {
             contentType: file.type  
           };
+          //put file into storage
           const task = ref.child(name).put(file, metadata);
         task
           .then(snapshot => snapshot.ref.getDownloadURL())
           .then((url) => {
             //Get URL of user image
             urlIcon = url;
-            //Put object into firebase database
-            database.ref("bets/"+uid).push({
-              title: title,
-              description: description, 
-              amountBet: amountBet,
-              dateBet: dateBet, 
-              imageURL: urlIcon
-
-              }, function(errorObject) {
-                  console.log("The update failed: " + errorObject.code);
-              });
           })
           .catch(console.error);
+
+
+          } else {
+            name = 'moneyWave.jpeg',
+            urlIcon = 'https://firebasestorage.googleapis.com/v0/b/illbetyou.appspot.com/o/moneyWave.jpeg?alt=media&token=8c1e843c-ccfa-4ce9-93f0-db13ef43d384';
+          }
+
+
+          //Put object into firebase database
+          database.ref("bets/"+uid).push({
+            fileName: name,
+            title: title,
+            description: description, 
+            amountBet: amountBet,
+            dateBet: dateBet, 
+            imageURL: urlIcon
+            }, function(errorObject) {
+                console.log("The update failed: " + errorObject.code);
+            });
           })
       }
-
   
       //WHEN THE DATABASE CHANGES
       database.ref().on("value", function(snap) {
         var user = firebase.auth().currentUser;
         if (user) {
             uid = user.uid;
+            userName = user.displayName;
         }
-        //clear bet area and redraw
+        //clear bet area, trash talk and redraw
         $('#betArea').empty();
+        $('#trashCan').empty();
 
         //redraw bets
             for (var key in snap.child('/bets/'+uid).val()) {
@@ -152,10 +173,34 @@ var config = {
               createBetCard(imageURL, title, description, key, '#betArea');
             }
           
+        //redraw trash talk
+            for (var key in snap.child('/messages').val()) {
+              let messageOfTrash = snap.child('messages/'+key+'/userMessage').val();
+              let newP = $('<p>');
+              newP.text(messageOfTrash);
+              $('#trashCan').prepend(newP);
+            }
+
         //onclick or removal of bets
           $('.removeBet').on('click', function() {
             let removeKey = this.id;
+            //remove bet from database
             database.ref('/bets/'+uid+'/'+removeKey).remove();
+            //remove picture from storage
+            const ref = firebase.storage().ref();
+            let fileName = snap.child('/bets/'+uid+'/'+removeKey+'/fileName').val();
+            if (fileName !== 'moneyWave.jpeg') {
+            ref.child(fileName).delete();
+            }
+          })
+
+          //onclick for trash talking button
+          $('#trashButton').on("click", function() {
+            userMessage = $('#trashTalk').val().trim();
+    
+            database.ref('/messages').push({
+                userMessage: userName+': '+userMessage
+            })
           })
       });
 
