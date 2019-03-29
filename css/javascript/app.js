@@ -16,3 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('#historyModal');
   var instances = M.Modal.init(elems, open);
 });
+
+// Slider on front page
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.slider');
+  var instances = M.Slider.init(elems, 100, 100, 200, 300);
+});
+
+
+
+$(document).ready(function(){
+  $('.slider').slider();
+});
+        
+// -----------End Slider--------------------
