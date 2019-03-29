@@ -15,6 +15,7 @@ var config = {
   //Global Variables
   //user uid
   var uid = '';
+  
 
   //USEFUL FUNCTIONS
   //Signout Function
@@ -23,9 +24,9 @@ var config = {
       firebase.auth().signOut();
     }
   }
-  
+
   //function to create a bet card
-  function createBetCard(imageSrc, betTitle, betDesc, prependID) {
+  function createBetCard(imageSrc, betTitle, betDesc, dataId, prependID) {
     //create new materialize card
     var card = $('<div>');
     card.addClass('card');
@@ -45,7 +46,8 @@ var config = {
     spanTitle.addClass('card-title activator grey-text text-darken-4');
     spanTitle.html(betTitle+"<i class='material-icons right'>more_vert</i>");
     var removeBet = $('<p>');
-    removeBet.attr('id', 'removeBet');
+    removeBet.addClass('removeBet');
+    removeBet.attr('id', dataId);
     removeBet.text('Remove Bet');
     cardTitle.append(spanTitle, removeBet);
 
@@ -103,7 +105,6 @@ var config = {
           var user = firebase.auth().currentUser;
           if (user) {
               uid = user.uid;
-              console.log('UID: ', uid);
           }
           const name = uid + '_' + file.name;
           const metadata = {
@@ -131,14 +132,31 @@ var config = {
           })
       }
 
-        
-
   
       //WHEN THE DATABASE CHANGES
       database.ref().on("value", function(snap) {
-            log('SNAP', snap);
-            log('SNAP VALUE', snap.val());
-            log('SNAP CHILD BETS USERID VALUE', snap.child('/bets/'+uid).val());
+        var user = firebase.auth().currentUser;
+        if (user) {
+            uid = user.uid;
+        }
+        //clear bet area and redraw
+        $('#betArea').empty();
+
+        //redraw bets
+            for (var key in snap.child('/bets/'+uid).val()) {
+              let amountBet = snap.child('/bets/'+uid+'/'+key+'/amountBet').val();
+              let title = snap.child('/bets/'+uid+'/'+key+'/title').val();
+              let dateBet = snap.child('/bets/'+uid+'/'+key+'/dateBet').val();
+              let description = snap.child('/bets/'+uid+'/'+key+'/description').val();
+              let imageURL = snap.child('/bets/'+uid+'/'+key+'/imageURL').val();
+              createBetCard(imageURL, title, description, key, '#betArea');
+            }
+          
+        //onclick or removal of bets
+          $('.removeBet').on('click', function() {
+            let removeKey = this.id;
+            database.ref('/bets/'+uid+'/'+removeKey).remove();
+          })
       });
 
 
