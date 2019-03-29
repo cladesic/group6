@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.Sidenav.init(elems, open);
 });
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
+  var elems = document.querySelectorAll('#profileModal');
   var instances = M.Modal.init(elems, open);
 });
 
@@ -32,3 +32,13 @@ $(document).ready(function(){
 });
         
 // -----------End Slider--------------------
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('#accountModal');
+  var instances = M.Modal.init(elems, open);
+});
+
+function myFunction() {
+  var x = document.getElementById("#imgUpload");
+  x.disabled = true;
+};
+
