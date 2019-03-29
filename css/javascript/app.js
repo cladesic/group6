@@ -23,17 +23,12 @@
 
     //HANDLES SIGN IN
     function toggleSignIn() {
-        if (firebase.auth().currentUser) {
-          // [START signout]
-          firebase.auth().signOut();
-          // [END signout]
-        } else {
           var email = document.getElementById('loginSignIn').value;
           var password = document.getElementById('passwordSignIn').value;
           if (email.length < 4) {
             alert('Please enter an email address');
           }
-          if ((password.length < 4) || (password.indexOf())) {
+          if (password.length < 4) {
             alert('Please enter a valid password.');
             return;
           }
@@ -48,7 +43,6 @@
               alert(errorMessage);
             }
           });
-        }
       }
   
       //HANDLES SIGN UP
@@ -153,8 +147,8 @@
         });
         // [END authstatelistener]
   
-        document.getElementById('signIn').addEventListener('click', toggleSignIn, false);
-        document.getElementById('signUp').addEventListener('click', handleSignUp, false);
+        document.getElementById('signedIn').addEventListener('click', toggleSignIn, false);
+        document.getElementById('signedUp').addEventListener('click', handleSignUp, false);
         // document.getElementById('emailVerify').addEventListener('click', sendEmailVerification, false);
         // document.getElementById('resetEmail').addEventListener('click', sendPasswordReset, false);
         // document.getElementById('userSignCheck').addEventListener('click', checkUser, false);
