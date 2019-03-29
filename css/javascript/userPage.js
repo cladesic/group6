@@ -131,16 +131,17 @@ var config = {
           .catch(console.error);
           })
       }
-
   
       //WHEN THE DATABASE CHANGES
       database.ref().on("value", function(snap) {
         var user = firebase.auth().currentUser;
         if (user) {
             uid = user.uid;
+            userName = user.displayName;
         }
-        //clear bet area and redraw
+        //clear bet area, trash talk and redraw
         $('#betArea').empty();
+        $('#trashCan').empty();
 
         //redraw bets
             for (var key in snap.child('/bets/'+uid).val()) {
@@ -152,10 +153,26 @@ var config = {
               createBetCard(imageURL, title, description, key, '#betArea');
             }
           
+        //redraw trash talk
+            for (var key in snap.child('/messages').val()) {
+              let messageOfTrash = snap.child('messages/'+key+'/userMessage').val();
+              let newP = $('<p>');
+              newP.text(messageOfTrash);
+              $('#trashCan').prepend(newP);
+            }
         //onclick or removal of bets
           $('.removeBet').on('click', function() {
             let removeKey = this.id;
             database.ref('/bets/'+uid+'/'+removeKey).remove();
+          })
+
+          //onclick for trash talking button
+          $('#trashButton').on("click", function() {
+            userMessage = $('#trashTalk').val().trim();
+    
+            database.ref('/messages').push({
+                userMessage: userName+': '+userMessage
+            })
           })
       });
 

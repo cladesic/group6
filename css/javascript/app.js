@@ -118,17 +118,7 @@
         // Listening for auth state changes.
         // [START authstatelistener]
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            //User is signed in
-                console.log('THERE IS A USER: ', user);
-                console.log('is this not firing im lost');
-
-              //Grab uid from user
-              uid = user.uid;
-
-              //send to userPage
-              window.location = 'userPage.html';
-              }
+          
           
             // If the user is signing up 
             if (signingUp === true) {
@@ -144,6 +134,14 @@
               })
               signingUp = false;
             }
+            if (user) {
+              //User is signed in
+  
+                //Grab uid from user
+                uid = user.uid;
+                //send to userPage
+                window.location = 'userPage.html';
+                }
         });
         // [END authstatelistener]
   
