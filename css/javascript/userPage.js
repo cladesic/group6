@@ -17,15 +17,51 @@ var config = {
   var uid = '';
 
   //USEFUL FUNCTIONS
-  //function to create new object
-  function newBet(title, description, amountBet, expirationDate, urlIcon) {
-    var obj = {};
-    obj.title = title;
-    obj.description = description;
-    obj.amountBet = amountBet;
-    obj.expirationDate = expirationDate;
-    obj.urlIcon = urlIcon;
-    return obj;
+  //Signout Function
+  function signingOut() {
+    if (firebase.auth().currentUser) {
+      firebase.auth().signOut();
+    }
+  }
+  
+  //function to create a bet card
+  function createBetCard(imageSrc, betTitle, betDesc, prependID) {
+    //create new materialize card
+    var card = $('<div>');
+    card.addClass('card');
+
+    //image
+    var cardImageHolder = $('<div>');
+    cardImageHolder.addClass('card-image waves-effect waves-block waves-light');
+    var image = $('<img>');
+    image.addClass('activator');
+    image.attr('src', imageSrc);
+    cardImageHolder.append(image);
+
+    //card title
+    var cardTitle = $('<div>');
+    cardTitle.addClass('card-content');
+    var spanTitle = $('<span>');
+    spanTitle.addClass('card-title activator grey-text text-darken-4');
+    spanTitle.html(betTitle+"<i class='material-icons right'>more_vert</i>");
+    var removeBet = $('<p>');
+    removeBet.attr('id', 'removeBet');
+    removeBet.text('Remove Bet');
+    cardTitle.append(spanTitle, removeBet);
+
+    //card description
+    var cardDescription = $('<div>');
+    cardDescription.addClass('card-reveal');
+    var spanDesc = $('<span>');
+    spanDesc.addClass('card-title grey-text text-darken-4');
+    spanDesc.html(betTitle+"<i class='material-icons right'>close</i>");
+    var pDesc = $('<p>');
+    pDesc.text(betDesc);
+    cardDescription.append(spanDesc, pDesc);
+
+    //append image and content to card
+    card.append(cardImageHolder, cardTitle, cardDescription);
+    $(prependID).append(card);
   }
 
   function log(title, item) {
@@ -43,12 +79,15 @@ var config = {
             //User is signed in
               }
           else {
+            window.location = 'index.html';
           }
         });
   
+
         //BUTTON LISTENERS
         //New Bet
         $('#agreeBet').on("click", function() {
+          event.preventDefault();
           var title = $('#bet_name').val();
           var description = $('#description').val();
           var amountBet = $('#amount_bet').val();
@@ -74,19 +113,33 @@ var config = {
         task
           .then(snapshot => snapshot.ref.getDownloadURL())
           .then((url) => {
+            //Get URL of user image
             urlIcon = url;
-    
+            //Put object into firebase database
+            database.ref("bets/"+uid).push({
+              title: title,
+              description: description, 
+              amountBet: amountBet,
+              dateBet: dateBet, 
+              imageURL: urlIcon
+
+              }, function(errorObject) {
+                  console.log("The update failed: " + errorObject.code);
+              });
           })
           .catch(console.error);
-
-          var betObject = newBet(title, description, amountBet, dateBet, urlIcon);
-          console.log(betObject);
           })
       }
+
+        
+
   
-      window.onload = function() {
-        initApp();
-      };
+      //WHEN THE DATABASE CHANGES
+      database.ref().on("value", function(snap) {
+            log('SNAP', snap);
+            log('SNAP VALUE', snap.val());
+            log('SNAP CHILD BETS USERID VALUE', snap.child('/bets/'+uid).val());
+      });
 
 
 
@@ -123,4 +176,9 @@ var config = {
   function myFunction() {
     var x = document.getElementById("#imgUpload");
     x.disabled = true;
+  };
+
+
+  window.onload = function() {
+    initApp();
   };
