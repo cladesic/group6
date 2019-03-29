@@ -6,8 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+       
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
@@ -20,9 +19,13 @@
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
+        
         <!-- google fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800i|Quantico:400i" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css?family=Faster+One|Paytone+One" rel="stylesheet">
 
+ <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
         <link rel="stylesheet" href="css/style.css">
@@ -33,51 +36,84 @@
 <body>
         <div class="container">
                 <header>
-                        <h1 class="z-depth-5">Betcha!</h1>
+                                <nav>
+                                                <div class="nav-wrapper">
+                                                  <ul id="slide-out" class="sidenav">
+                                                    <li>
+                                                      <div class="user-view">
+                                                        
+                                                        <br><br>
+                                                        <a href="#name"><span class="white-text name"></span></a>
+                                                        <a href="#email"><span class="white-text email"></span></a>
+                                                      </div>
+                                                    </li>
+                                                    <li><a class="waves-effect waves-light btn modal-trigger" href="#betModal">Bet</a></li>
+                                                    <li>
+                                                      <div class="divider"></div>
+                                                    </li>
+                                                    <li><a class="waves-effect waves-light btn modal-trigger" href="#historyModal">Bet History</a></li>
+                                                    <li><a class="waves-effect waves-light btn modal-trigger" href="#accountModal">Balance</a>
+                                                      <li><a href="#!">Something Link</a></li>
+                                                      <li><a class="subheader">Scores</a></li>
+                                                  </ul>
+                                                  <img src="css/images/profile.png" data-target="slide-out" class="sidenav-trigger"></img>
+                                                  <ul id="nav-mobile" class="center hide-on-med-and-down"></ul>
+                                                  <div class="nav-wrapper">
+                                                    <a href="#" class="brand-logo center">Betcha!</a>
+                                                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                                      <li><a href="#">Bets</a></li>
+                                                      <li><a href="#">SomeLink</a></li>
+                                                      <li> <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Sign In/Out</a></li>
+                                                    </ul>
+                                                  </div>
+                                              </nav>
+                        <!-- <h1 class="z-depth-5">Betcha!</h1> -->
                 </header>
 
-                <div class="row">
-                        <div class="col s4">
-                                <div class="row">
-                                        <img src="https://img.icons8.com/ios/96/000000/crowd.png">
-                                </div>
-                                <div class="row">
-                                        <h4>Bet Your Friends</h2>
-                                                <h6>Friends talking trash?
-                                        </h4>
-                                        <h6>Put up a friendly wager </h4>
-                                </div>
+               
+               
+                <div class="slider" "fullscreen" style="height: 400px;">
+                                <ul class="slides" style="height: 400px;">
+                                  <li class="active" style="opacity: 0; transform: translateX(0px) translateY(0px);">
+                                    <img src="css/images/dice.jpg"> 
+                                    <div class= "caption center-align">
+                                                <h4>Bet Your Friends</h2>
+                                                <h6>Friends talking trash?</h6>
+                                                <h6>Put up a friendly wager </h6>
+                                      
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <img src="css/images/cards-casino-chips-39856.jpg"> 
+                                    <div class= "caption left-align">
+                                                <h4>Fast, Safe, Secure</h4>
+                                                <h6>Put your money where your mouth is!</h6>
+                                                <h6>Gotta hunch, or feeling confident?</h6>
+                                                <h6>Make a BET!</h6>
+                                     
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <img src="css/images/cashcards.jpg">
+                                    <div class="caption right-align">
+                                                <h4>Put Up, or Shut Up!</h4>
+                                                <h6>Take Action!</h6>
+                                                <h6>Real Money!</h6>
+                                                <h6>Real Winners and Losers!</h6>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <img src="css/images/user.jpg"> 
+                                    <div class="caption center-align">
+                                      <h4>Start Betting Today!</h4>
+                                      <h5 class="light grey-text text-lighten-3">Winning  is just a click a way!</h5>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                        
 
-                        </div>
-                        <div class="col s4">
-                                <div class="row">
-                                        <img src="https://img.icons8.com/ios/100/000000/budget.png">
-                                </div>
-                                <div class="row">
-                                        <h4>Fast, Safe, Secure</h4>
-                                        <h6>Put your money where your mouth is!</h6>
-                                        <h6>Gotta hunch, or feeling confident?</h6>
-                                        <h6>Make a BET!</h6>
-                                </div>
-
-
-                        </div>
-                        <div class="col s4">
-                                <div class="row">
-                                        <img src="https://img.icons8.com/ios/100/000000/exchange.png">
-                                </div>
-                                <div class="row">
-                                        <h4>Put Up, or Shut Up!</h4>
-                                        <h6>Take Action!</h6>
-                                        <h6>Real Money!</h6>
-                                        <h6>Real Winners and Losers!</h6>
-                                </div>
-                        </div>
-                </div>
-                <br>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register</a>
-
-                <!-- Modal Structure -->
+               
                 <div id="modal1" class="modal">
                         <div class="modal-content">
                                 <h4>Account</h4>
