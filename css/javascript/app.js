@@ -221,9 +221,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-$(document).ready(function(){
-  $('.slider').slider();
-});
+//$(document).ready(function(){
+////  $('.slider').slider();
+///});
         
 // -----------End Slider--------------------
 document.addEventListener('DOMContentLoaded', function() {
