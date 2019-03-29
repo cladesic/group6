@@ -12,7 +12,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 
         <!-- Firebase Ref -->
-        <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
         <!-- moment js ref -->
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -131,13 +131,13 @@
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="password" type="password" class="validate">
+                                              <input id="passwordUp" type="password" class="validate">
                                               <label for="password">Password</label>
                                             </div>
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s12">
-                                              <input id="email" type="email" class="validate">
+                                              <input id="emailUp" type="email" class="validate">
                                               <label for="email">Email</label>
                                             </div>
                                           </div>
@@ -145,11 +145,33 @@
                                       </div>
                         </div>
                         <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                                <a href="#!" id="signUp" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                         </div>
                 </div>
 
-
+                <!--Log In Modal Structure-->
+                <div id="modal2" class="modal">
+                        <div class="modal-content">
+                                <h4>Login</h4>
+                                <div class="row">
+                                        <form class="col s12">
+                                          <div class="row">
+                                            <div class="input-field col s6">
+                                              <input id="loginSignIn" type="text" class="validate">
+                                              <label for="login">Log ID Name</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                              <input id="passwordSignIn" type="text" class="validate">
+                                              <label for="password">Password</label>
+                                            </div>
+                                          </div>
+                                        </form>
+                                      </div>
+                        </div>
+                        <div class="modal-footer">
+                                <a href="#!" id="signIn" class="modal-close waves-effect waves-green btn-flat" id="signIn">Submit</a>
+                        </div>
+                </div>
 
                 <br>
                 <br>
