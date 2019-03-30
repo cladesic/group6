@@ -22,7 +22,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- google fonts -->
+
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Faster+One|Paytone+One|Teko:400,600" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Faster+One|Paytone+One|Teko:400,600"
+    rel="stylesheet">
+
 
    <!-- Firebase Ref -->
    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
@@ -42,7 +48,8 @@
     <header>
       <nav class="nav-extended">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center"><img src="css/images/betcha.png" height="75%" width="75%" alt="logo"></a>
+          <a href="#" class="brand-logo center"><img src="css/images/betcha.png" height="75%" width="75%"
+              alt="logo"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li> <a class="waves-effect waves-light btn modal-trigger" href="#signUp">Register</a></li>
             <li> <a class="waves-effect waves-light btn modal-trigger" href="#signIn">Sign In</a></li>
@@ -56,13 +63,10 @@
           <ul class="tabs tabs-transparent">
             <li></li>
         </div>
-  
-  </nav>
-  </header>
 
- 
+      </nav>
+    </header>
 
-  <div class="slider" style="height: auto; width: auto;">
 
    <ul class="slides" style="height: auto;">
 
@@ -126,68 +130,67 @@
 
 </div>
 
-
-  <div id="signUp" class="modal">
-    <div class="modal-content">
-      <h4>Account</h4>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
+    <div id="signUp" class="modal">
+      <div class="modal-content">
+        <h4>Account</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+              </div>
             </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="passwordUp" type="password" class="validate">
+                <label for="passwordUp">Password</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="passwordUp" type="password" class="validate">
-              <label for="passwordUp">Password</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="emailUp" type="email" class="validate">
+                <label for="emailUp">Email</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="emailUp" type="email" class="validate">
-              <label for="emailUp">Email</label>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="signedUp" class="modal-close waves-effect waves-green btn-flat">Agree</a>
       </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" id="signedUp" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
 
-  <!--Log In Modal Structure-->
-  <div id="signIn" class="modal">
-    <div class="modal-content">
-      <h4>Login</h4>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="loginSignIn" type="text" class="validate">
-              <label for="loginSignIn">Log ID Name</label>
+    <!--Log In Modal Structure-->
+    <div id="signIn" class="modal">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="loginSignIn" type="text" class="validate">
+                <label for="loginSignIn">Log ID Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="passwordSignIn" type="text" class="validate">
+                <label for="passwordSignIn">Password</label>
+              </div>
             </div>
-            <div class="input-field col s6">
-              <input id="passwordSignIn" type="text" class="validate">
-              <label for="passwordSignIn">Password</label>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#! class=" modal-close waves-effect waves-green btn-flat" id="signedIn">Submit</a>
       </div>
     </div>
-    <div class="modal-footer">
-      <a href="#! class="modal-close waves-effect waves-green btn-flat" id="signedIn">Submit</a>
-    </div>
-  </div>
 
-  <br>
-  <br>
+    <br>
+    <br>
   </div>
   
   <script type="text/javascript" src="css/javascript/app.js"> </script>

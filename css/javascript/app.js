@@ -83,7 +83,11 @@
             }
           });
 
+
+          var user = firebase.auth().currentUser;
+          if(user) {
           window.location = 'userPage.html';
+          }
       }
   
       //HANDLES SIGN UP
@@ -111,6 +115,21 @@
           } else {
             alert(errorMessage);
           }
+        }).then(function () {
+          //add displayName to userProfile
+          //set display Name
+          var displayNamez = firstName+' '+lastName;
+          //get currentUser
+          let user = firebase.auth().currentUser;
+          //update User with display Name
+          user.updateProfile({
+            displayName: displayNamez
+          }).then(function() {
+            console.log('DISPLAY NAME UPDATED SUCCESFULLY');
+            window.location = 'userPage.html';
+          }).catch(function(error) {
+            console.log(errorCode);
+          })
         });
         signingUp = true;
     }
@@ -150,39 +169,16 @@
         });
       }
   
-      /**
-       * initApp handles setting up UI event listeners and registering Firebase auth listeners:
-       *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
-       *    out, and that is where we update the UI.
-       */
+      //run initApp to check if user is already signed in
       function initApp() {
         // Listening for auth state changes.
         firebase.auth().onAuthStateChanged(function(user) {
-          
-          
-            // If the user is signing up 
-            if (signingUp === true) {
-              //set display Name
-              var displayNamez = firstName+' '+lastName;
-              console.log('DISPLAY NAME: ', displayNamez);
-              //update User with display Name
-              console.log('USER: ', user);
-              user.updateProfile({
-                displayName: displayNamez
-              }).then(function() {
-                console.log('DISPLAY NAME UPDATED SUCCESFULLY');
-                window.location = 'userPage.html';
-              }).catch(function(error) {
-                console.log(errorCode);
-              })
-              signingUp = false;
-            }
-
             if (user) {
               //User is signed in
-
                 //Grab uid from user
                 uid = user.uid;
+                //redirect the user
+                // window.location = 'userPage.html';
               }
         });
         // [END authstatelistener]
