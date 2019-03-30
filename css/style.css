@@ -46,6 +46,10 @@ body{
 }
 
 nav{
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4390ee8ae22591ff38a5e81ab17f1c47a3ff23f6
     background-color: #A4BD99;
    border: 4px solid #77876B;
    border-radius: 20px;
@@ -56,6 +60,10 @@ nav{
   height: 60px;
   margin-top: 8px;
   margin-bottom: 8px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4390ee8ae22591ff38a5e81ab17f1c47a3ff23f6
 }
 .sidenav-trigger{
     margin-left: 5px;
