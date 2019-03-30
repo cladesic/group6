@@ -211,6 +211,7 @@ var config = {
           //onclick for trash talking button
           $('#trashButton').on("click", function() {
             userMessage = $('#trashTalk').val().trim();
+            $('#trashTalk').empty();
     
             database.ref('/messages').push({
                 userMessage: userName+': '+userMessage
