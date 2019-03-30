@@ -6,26 +6,31 @@ body{
   background-size: cover;
   background-attachment: fixed;
     color: #a4bd99;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
-h1{
-    text-align: center;
-    border: dashed  #065c27 4px;
-}
 
-h4{
-    color: black;
+
+.slidertext{
+    color: #77876B;
     font-family: 'Faster One', cursive;
-    font-size: 5vw;
+    font-size: 2.5vw;
+    text-shadow:  .25vw .25vw  #033617;
 }
 
-h6{
-    color: black;
-    font-family: 'Paytone One', sans-serif;
+
+
+.slidertext2 {
+    color: #065C27;
+    font-size: 3vw;
+    text-shadow: 3px 3px #77876B;
+ 
+   
 }
+
 
 .container{
-    border: #77876B solid 2px;
+    /* border: #77876B solid 2px; */
     margin-top: 10px;
 
 }
@@ -104,7 +109,7 @@ nav{
   }
   .slider {
     width: 900px;
-    margin: 0 auto;
+    margin: 6vw auto;
   }
   .slider .indicators {
     bottom: 60px;
