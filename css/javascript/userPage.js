@@ -15,6 +15,7 @@ var config = {
   //Global Variables
   //user uid
   var uid = '';
+  var allBets = false;
   
 
   //USEFUL FUNCTIONS
@@ -26,7 +27,9 @@ var config = {
   }
 
   //function to create a bet card
-  function createBetCard(imageSrc, betTitle, betDesc, dataId, prependID) {
+  function createBetCard(imageSrc, betTitle, betDesc, dataId, prependID, key) {
+    //if this bet has been accepted then don't post it
+
     //create new materialize card
     var card = $('<div>');
     card.addClass('card');
@@ -45,11 +48,24 @@ var config = {
     var spanTitle = $('<span>');
     spanTitle.addClass('card-title activator grey-text text-darken-4');
     spanTitle.html(betTitle+"<i class='material-icons right'>more_vert</i>");
-    var removeBet = $('<p>');
-    removeBet.addClass('removeBet');
-    removeBet.attr('id', dataId);
-    removeBet.text('Remove Bet');
-    cardTitle.append(spanTitle, removeBet);
+    cardTitle.append(spanTitle);
+    if (allBets === false) {
+      var removeBet = $('<p>');
+      removeBet.addClass('removeBet');
+      removeBet.attr('id', dataId);
+      removeBet.text('Remove Bet');
+      cardTitle.append(removeBet);
+    } else {
+      var acceptBet = $('<p>');
+      acceptBet.addClass('acceptBet');
+      acceptBet.attr('id', dataId);
+      if (key) {
+      acceptBet.attr('key', key);
+      }
+      acceptBet.text('accept Bet');
+      cardTitle.append(acceptBet);
+    }
+    
 
     //card description
     var cardDescription = $('<div>');
@@ -211,11 +227,89 @@ var config = {
           //onclick for trash talking button
           $('#trashButton').on("click", function() {
             userMessage = $('#trashTalk').val().trim();
+            $('#trashTalk').val('');
+            console.log($('#trashTalk').val());
     
             database.ref('/messages').push({
                 userMessage: userName+': '+userMessage
             })
           })
+
+          //ALL BETS
+          $('#allBets').on("click", function() {
+            event.preventDefault();
+            //clear bet area
+            $('#betArea').empty();
+            //toggle all bets to true
+            allBets = true;
+          //get all users
+            for (var userID in snap.child('/bets').val()) {
+                //get all keys
+                  for (var key in snap.child('/bets/'+userID).val()) {
+                    //get bet object
+                    var betRef = snap.child('/bets/'+userID+'/'+key).val();
+                    //get bet data
+                    let imageURL = betRef.imageURL;
+                    let title = betRef.title;
+                    let description = betRef.description;
+                    let dataID = userID;
+                    let betAccepted = betRef.betAccepted;
+
+                    if ((uid === dataID) || (betAccepted === true)) {
+                      //THIS IS A USERS BET OR THE BET HAS ALREADY BEEN ACCEPTED
+                    } else {
+                    createBetCard(imageURL, title, description, dataID, '#betArea', key);
+                    }
+                  }
+              }
+              
+              //ACCEPT BET
+                $('.acceptBet').on('click', function() {
+                  console.log('CHALLENGE ACCEPTED');
+                  //enter that the bet has been accepted into the database
+                  log('WHO AM I', uid);
+                  log('WHO IS MY ADVISARY', this.id);
+                  var betKey = $(this).attr('key');
+                  log('ADVISARY BET KEY', betKey);
+                  database.ref('/bets/'+this.id+'/'+betKey).update({
+                    betAccepted: true, 
+                    betOpponent: this.id
+                  })
+                })
+            });   
+            
+            
+            //BETS ACCEPTED
+          $('#betsAccepted').on("click", function() {
+            event.preventDefault();
+            //clear bet area
+            $('#betArea').empty();
+            //toggle all bets to false
+            allBets = false;
+          //get all users
+            for (var userID in snap.child('/bets').val()) {
+                //get all keys
+                  for (var key in snap.child('/bets/'+userID).val()) {
+                    //get bet object
+                    var betRef = snap.child('/bets/'+userID+'/'+key).val();
+                    //get bet data
+                    let betAccepted = betRef.betAccepted;
+                    let betOpponent = betRef.betOpponent;
+
+                    log('USER ID', uid);
+                    log('BET OPPONENT', betOpponent);
+                    
+                    //if user is the bet opponent
+                    if ((uid === betOpponent) && (betAccepted === true)) {
+                      console.log('I BET ON THIS');
+                    } else {
+                      console.log('I AM LOST');
+                    }
+                  }
+              }
+          });   
+
+
       });
 
 
