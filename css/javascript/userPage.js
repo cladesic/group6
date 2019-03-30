@@ -63,7 +63,7 @@ var config = {
 
     //append image and content to card
     card.append(cardImageHolder, cardTitle, cardDescription);
-    $(prependID).append(card);
+    $(prependID).prepend(card);
   }
 
   function log(title, item) {
@@ -128,17 +128,9 @@ var config = {
           .then((url) => {
             //Get URL of user image
             urlIcon = url;
-          })
-          .catch(console.error);
+            log('URL ICON', url);
 
-
-          } else {
-            name = 'moneyWave.jpeg',
-            urlIcon = 'https://firebasestorage.googleapis.com/v0/b/illbetyou.appspot.com/o/moneyWave.jpeg?alt=media&token=8c1e843c-ccfa-4ce9-93f0-db13ef43d384';
-          }
-
-
-          //Put object into firebase database
+            //Put object into firebase database
           database.ref("bets/"+uid).push({
             fileName: name,
             title: title,
@@ -149,6 +141,28 @@ var config = {
             }, function(errorObject) {
                 console.log("The update failed: " + errorObject.code);
             });
+          })
+          .catch(console.error);
+
+
+          } else {
+            name = 'moneyWave.jpeg',
+            urlIcon = 'https://firebasestorage.googleapis.com/v0/b/illbetyou.appspot.com/o/moneyWave.jpeg?alt=media&token=8c1e843c-ccfa-4ce9-93f0-db13ef43d384';
+             //Put object into firebase database
+            database.ref("bets/"+uid).push({
+            fileName: name,
+            title: title,
+            description: description, 
+            amountBet: amountBet,
+            dateBet: dateBet, 
+            imageURL: urlIcon
+            }, function(errorObject) {
+                console.log("The update failed: " + errorObject.code);
+            });
+          }
+
+
+          
           })
       }
   
