@@ -40,22 +40,28 @@ body{
     /* border: #77876B solid 2px; */
 }
 
-.row{
-    padding-top: 5vw;
-}
-
 .col{
     text-align: center;
 }
 nav{
     background-color: #055813;
+    height: 80px;
+}
+#profileSlide{
+  height: 60px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .sidenav-trigger{
     margin-left: 5px;
     margin-top: 5px;
+    
 } 
 #chatArea{
     background-color:white;
+}
+#trashTalk{
+background-color: white;
 }
 .card-panel{
     overflow: scroll; 
