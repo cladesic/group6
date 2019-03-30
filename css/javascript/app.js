@@ -43,6 +43,8 @@
               alert(errorMessage);
             }
           });
+
+          window.location = 'userPage.html';
       }
   
       //HANDLES SIGN UP
@@ -139,11 +141,9 @@
 
             if (user) {
               //User is signed in
-  
+
                 //Grab uid from user
                 uid = user.uid;
-                //send to userPage
-                window.location = 'userPage.html';
               }
         });
         // [END authstatelistener]
