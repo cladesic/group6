@@ -147,7 +147,7 @@
               }
         });
         // [END authstatelistener]
-  
+       
         document.getElementById('signedIn').addEventListener('click', toggleSignIn, false);
         document.getElementById('signedUp').addEventListener('click', handleSignUp, false);
         // document.getElementById('emailVerify').addEventListener('click', sendEmailVerification, false);
