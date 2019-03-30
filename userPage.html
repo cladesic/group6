@@ -14,7 +14,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
   <!-- moment js ref -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800i|Quantico:400i" rel="stylesheet">
   <!-- materialize icons link-->
@@ -43,8 +44,7 @@
       <li>
         <div class="divider"></div>
       </li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#historyModal">Transition History</a></li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#profileModal">Profile Update</a>
+      <li><a class="waves-effect waves-light btn modal-trigger" href="#historyModal">Transaction History</a></li>
       <li><a class="waves-effect waves-light btn modal-trigger" href="#accountModal">Wallet</a>
       <li>
       <li><a href="#!">Account Balance $</a>
@@ -52,8 +52,8 @@
       </li>
       <div class="divider"></div>
       <div class="modal-footer">
-        <div class="signOut">
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#signModal">Sign Out</a>
+        <div class="signOut" id='signOut' onclick='signingOut()'>
+          <li><a class="waves-effect waves-light btn">Sign Out</a>
           </li>
         </div>
     </ul>
@@ -68,7 +68,6 @@
         </li>
         <li><i class="material-icons">search</i></li>
         <li><textarea id="searchBet" class="materialize-textarea"></textarea></li>
-        <li><a href="#">My Bets </a></li>
         <li></li>
       </ul>
     </div>
@@ -99,22 +98,12 @@
         <div class="row">
           <div class="col s12">
             <div class="card-panel">
-              <span class="black-text">
-                <p>Phasellus convallis volutpat metus, eu cursus ante ultricies ac. Vivamus auctor, velit vitae egestas
-                  volutpat, orci sem lobortis felis, ac tincidunt quam eros vitae odio. Mauris magna arcu, ornare rutrum
-                  orci ac, maximus tristique lectus. Vivamus viverra libero at augue ullamcorper gravida. Donec vitae
-                  bibendum velit. Pellentesque euismod neque eu felis lobortis, ut suscipit eros facilisis. Nulla
-                  facilisis condimentum faucibus. Fusce placerat euismod nisi, ut facilisis odio consectetur vel. Donec
-                  suscipit dui eu lectus consectetur posuere. Sed aliquam, turpis nec aliquet bibendum, velit augue
-                  lacinia lorem, a ullamcorper massa odio vitae odio. Proin sagittis nunc ac nisi lacinia, eu ornare leo
-                  faucibus. Proin dictum viverra dolor, at venenatis quam porttitor et. Donec in hendrerit nulla, sit
-                  amet bibendum ipsum. In eget vestibulum mi, a molestie enim. Pellentesque leo magna, consectetur at
-                  enim ut, faucibus sollicitudin ex.</p>
+              <span class="black-text" id='trashCan'>
               </span>
             </div>
             <!--Chat Input Area-->
-            <textarea id="chatArea" class="materialize-textarea"></textarea>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
+            <textarea id="trashTalk" class="materialize-textarea"></textarea>
+            <button class="btn waves-effect waves-light" id='trashButton' type="button" name="action">
               <i class="material-icons chat">send</i>
             </button>
           </div>
@@ -236,36 +225,10 @@
           </div>
         </div>
 
-        <!-- Profile update Modal-->
-        <div id="profileModal" class="modal">
-          <div class="modal-content">
-            <h4>Profile</h4>
-            <div class="row">
-              <form class="col s12">
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Update</a>
-          </div>
-        </div>
-
         <!--Wallet Modal-->
         <div id="accountModal" class="modal">
           <div class="modal-content">
-            <h4>Profile</h4>
+            <h4>Wallet Details</h4>
             <div class="row">
               <form class="col s12">
                 <div class="row">
