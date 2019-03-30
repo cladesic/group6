@@ -116,7 +116,6 @@
        */
       function initApp() {
         // Listening for auth state changes.
-        // [START authstatelistener]
         firebase.auth().onAuthStateChanged(function(user) {
           
           
@@ -124,16 +123,20 @@
             if (signingUp === true) {
               //set display Name
               var displayNamez = firstName+' '+lastName;
+              console.log('DISPLAY NAME: ', displayNamez);
               //update User with display Name
+              console.log('USER: ', user);
               user.updateProfile({
                 displayName: displayNamez
               }).then(function() {
                 console.log('DISPLAY NAME UPDATED SUCCESFULLY');
+                window.location = 'userPage.html';
               }).catch(function(error) {
                 console.log(errorCode);
               })
               signingUp = false;
             }
+
             if (user) {
               //User is signed in
   
@@ -141,7 +144,7 @@
                 uid = user.uid;
                 //send to userPage
                 window.location = 'userPage.html';
-                }
+              }
         });
         // [END authstatelistener]
   
