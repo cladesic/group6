@@ -1,3 +1,42 @@
+// function to query NYTimes API
+
+
+
+  var queryURL = "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=QYoz6umGY0MGq7soeaqCsnY1uFcCSUfm";
+
+  console.log(queryURL);
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+
+    var results = response;
+    console.log(results.results);
+
+
+    for (var i = 0; i < results.results.length; i++) {
+      // console.log(results.results[i].title);
+
+      var articleDiv = $("<div>");
+
+
+      var article = results.results[i].short_url;
+      var desc = results.results[i].title;
+      var image = results.results[i].multimedia[3].url;
+      console.log(image);
+
+      $(".sports > tbody").prepend("<tr><td><a href=" +  article + ">" + desc + "</a>" + "</td><td>" + "<img src=" + image + ">" +  "</td>");
+
+    }
+  });
+
+// END NYTIMES API FUNCTION--------------------------
+
+
+
+
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCNzMfwo6UQ5HB-GH6unmM6YB0T7yPmdOE",
@@ -226,4 +265,5 @@ function myFunction() {
   var x = document.getElementById("#imgUpload");
   x.disabled = true;
 };
+
 

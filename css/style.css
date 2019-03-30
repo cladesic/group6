@@ -14,7 +14,7 @@ body{
 .slidertext{
     color: #77876B;
     font-family: 'Faster One', cursive;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     text-shadow:  .25vw .25vw  #033617;
 }
 
@@ -24,6 +24,7 @@ body{
     color: #065C27;
     font-size: 3vw;
     text-shadow: 3px 3px #77876B;
+    font-weight: 900;
  
    
 }
@@ -44,6 +45,10 @@ body{
     text-align: center;
 }
 nav{
+
+    background-color: #A4BD99;
+   border: 4px solid #77876B;
+   border-radius: 20px;
     background-color: #055813;
     height: 80px;
 }
@@ -51,6 +56,7 @@ nav{
   height: 60px;
   margin-top: 8px;
   margin-bottom: 8px;
+
 }
 .sidenav-trigger{
     margin-left: 5px;
